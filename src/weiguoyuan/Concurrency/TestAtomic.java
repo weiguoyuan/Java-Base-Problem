@@ -26,11 +26,7 @@ class Atomic implements Runnable{
                 System.out.println(Thread.currentThread().getName()+":"+count);
 
             }
-
         }
-
-
-
     }
 
     public static class TestAtomic {
