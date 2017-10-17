@@ -12,15 +12,15 @@ class Atomic implements Runnable{
 
     @Override
     public void run() {
-        Object obj = new Object();
 
-        synchronized(obj){
-            while (count.get() > 0){
-                try {
-                    Thread.sleep(30);
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
+        while (count.get() > 0){
+            try {
+                Thread.sleep(30);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            synchronized(Atomic.class){
+
                 count.decrementAndGet();
 
                 System.out.println(Thread.currentThread().getName()+":"+count);
@@ -28,6 +28,7 @@ class Atomic implements Runnable{
             }
 
         }
+
 
 
     }
