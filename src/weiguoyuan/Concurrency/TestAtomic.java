@@ -6,30 +6,42 @@ import java.util.concurrent.atomic.AtomicLong;
  * Created by william on 2017/10/16.
  */
 
-class Atomic extends Thread{
+class Atomic implements Runnable{
 
-    private final AtomicLong count = new AtomicLong(0);
+    private final AtomicLong count = new AtomicLong(1000);
 
-    public void incr(){
-        count.incrementAndGet();
-    }
+    @Override
+    public void run() {
+        Object obj = new Object();
 
-    public void run(){
-        int i = 1000;
-        while (i>0){
-            incr();
-            System.out.println(count);
-            i--;
+        synchronized(obj){
+            while (count.get() > 0){
+                try {
+                    Thread.sleep(30);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+                count.decrementAndGet();
+
+                System.out.println(Thread.currentThread().getName()+":"+count);
+
+            }
+
         }
+
+
     }
 
     public static class TestAtomic {
 
         public static void main(String[] args){
+
             Atomic t1 = new Atomic();
-            Atomic t2 = new Atomic();
-            t1.start();
-            t2.start();
+
+            new Thread(t1).start();
+            new Thread(t1).start();
+            new Thread(t1).start();
+
         }
     }
 }
