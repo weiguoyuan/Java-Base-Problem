@@ -29,7 +29,7 @@ public class TestThreadLocal {
         public void run() {
             System.out.println("线程" + index + "的初始value:" + value.get());
             for (int i = 0; i < 10; i++) {
-                value.set(value.get() + i);
+                value.set(value.get() + index);
             }
             System.out.println("线程" + index + "的累加value:" + value.get());
         }
