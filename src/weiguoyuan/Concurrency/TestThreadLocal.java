@@ -2,7 +2,7 @@ package weiguoyuan.Concurrency;
 
 /**
  * Created by william on 2017/10/24.
- * 测试ThreadLocal 没个线程都维护一份变量
+ * 测试ThreadLocal 每个线程都维护一份变量
  */
 
 public class TestThreadLocal {
