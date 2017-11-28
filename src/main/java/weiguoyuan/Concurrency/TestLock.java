@@ -31,7 +31,7 @@ public class TestLock {
                                 return true;
                             }
                         }finally {
-                            to.lock.unlock();
+                            to.lock.unlock();//一定要记住释放锁
                         }
                     }
                 }finally {
