@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Created by william on 2017/11/15.
- * 测试线程的取消 输出1以后的素数 1s后终止
+ * 测试线程的取消 输出1以后的素数 1s后终止(确切的说是1s多 while的下次判断也需要时间)
  */
 
 public class TestCancellable{
@@ -42,7 +42,7 @@ class PrimeGenerator implements Runnable {
 
     public void run(){
         BigInteger p = BigInteger.ONE;
-        while (!cancelled){
+        while (!cancelled){//判断是否取消
             p = p.nextProbablePrime();
             System.out.println(p);
             synchronized (this){

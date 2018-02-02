@@ -29,32 +29,32 @@ public class TestCompletionService {
         this.executor=executor;
     }
 
-    void rederPage(CharSequence source){
-        List<ImageInfo> info = scanForImageInfo(source);
-        CompletionService<ImgageData> completionService = new CompletionService<ImgageData>(executor);
-        for(final ImageInfo imageInfo:info){
-            completionService.submit(new Callable<ImgageData>() {
-                @Override
-                public ImgageData call() throws Exception {
-                    return imageInfo.downloadImage();
-                }
-            });
-        }
-
-        rederText(source);
-
-        try{
-            for(int t=0;t<info.size();t++){
-                Future<ImageData> f = completionService.take();
-                ImageData imageData = f.get();
-                rederImage(imageData);
-            }
-        }catch (InterruptedException e){
-            Thread.currentThread().interrupt();
-        }catch (ExecutionException e){
-            throw launderThrowable(e.getCause());
-        }
-    }
+//    void rederPage(CharSequence source){
+//        List<ImageInfo> info = scanForImageInfo(source);
+//        CompletionService<ImgageData> completionService = new CompletionService<ImgageData>(executor);
+//        for(final ImageInfo imageInfo:info){
+//            completionService.submit(new Callable<ImgageData>() {
+//                @Override
+//                public ImgageData call() throws Exception {
+//                    return imageInfo.downloadImage();
+//                }
+//            });
+//        }
+//
+//        rederText(source);
+//
+//        try{
+//            for(int t=0;t<info.size();t++){
+//                Future<ImageData> f = completionService.take();
+//                ImageData imageData = f.get();
+//                rederImage(imageData);
+//            }
+//        }catch (InterruptedException e){
+//            Thread.currentThread().interrupt();
+//        }catch (ExecutionException e){
+//            throw launderThrowable(e.getCause());
+//        }
+//    }
 
 }
 

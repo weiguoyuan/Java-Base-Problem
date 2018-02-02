@@ -15,6 +15,7 @@ public class TestURLConnection {
     public static void main(String[] args){
         URLClient client = new URLClient();
         System.out.println(client.getDocumentAt("https://www.baidu.com"));
+        System.out.println(Runtime.getRuntime().availableProcessors());//获得cpu个数
     }
 }
 

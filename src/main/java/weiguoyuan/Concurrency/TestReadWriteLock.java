@@ -8,7 +8,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * Created by william on 2017/11/28.
- * 
+ *
  */
 public class TestReadWriteLock {
 }
